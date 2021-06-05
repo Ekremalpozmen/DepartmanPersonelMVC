@@ -1,0 +1,21 @@
+﻿<nav class="navbar navbar-light bg-light navbar-expand-md">
+    <a class="navbar-brand" href="#">Personel Yönetim Sistemi Toplam Gider:
+    @{Html.RenderAction("ToplamMaas", "Personel"); }
+    </a>
+
+
+    <ul class="nav navbar-nav">
+        <li class="active nav-item">
+            <a href="/Departman" class="nav-link">Departman</a>
+        </li>
+        <li class="nav-item">
+            <a href="/Personel" class="nav-link">Personel</a>
+        </li>
+        <li class="nav-item">
+            <a href="/Security/Logout" class="nav-link">Çıkış Yap </a>
+        </li>
+
+    </ul>
+    Kullanıcı:  @HttpContext.Current.User.Identity.Name
+
+</nav>

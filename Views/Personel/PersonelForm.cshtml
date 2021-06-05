@@ -1,0 +1,49 @@
+﻿@model PersonelMVCUI.ViewModels.PersonelFormViewModel
+@{
+    ViewBag.Title = "PersonelForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel Formu</h2>
+
+@using (Html.BeginForm("Kaydet", "Personel", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-check">
+        @Html.LabelFor(m => m.Personel.Ad)
+        @Html.TextBoxFor(m => m.Personel.Ad, new { @class = "form-control" })
+    </div>
+    <div class="form-check">
+        @Html.LabelFor(m => m.Personel.Soyad)
+        @Html.TextBoxFor(m => m.Personel.Soyad, new { @class = "form-control" })
+    </div>
+    <div class="form-check">
+        @Html.LabelFor(m => m.Personel.DepartmanId)
+        @Html.DropDownListFor(m => m.Personel.DepartmanId, new SelectList(Model.Departmanlar, "Id", "Ad"), "departman seç", new { @class = "form-control" })
+    </div>
+    <div class="form-check">
+        @Html.LabelFor(m => m.Personel.Maas)
+        @Html.TextBoxFor(m => m.Personel.Maas, new { @class = "form-control" })
+    </div>
+    <div class="form-check">
+        @Html.LabelFor(m => m.Personel.Dogum_Tarihi)
+        @Html.TextBoxFor(m => m.Personel.Dogum_Tarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="radio">
+        <label>
+            @Html.RadioButtonFor(m => m.Personel.Cinsiyet, true) Erkek
+        </label>
+        <label>
+            @Html.RadioButtonFor(m => m.Personel.Cinsiyet, false) Kadın
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Personel.EvliMi) Evliyseniz Seçiniz
+        </label>
+    </div>
+    @Html.HiddenFor(m => m.Personel.Id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+
+
